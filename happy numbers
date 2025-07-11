@@ -1,0 +1,22 @@
+
+class Main {
+    public static void main(String[] args) {
+        int age=987;
+        int num=age;
+        while(num!=1 && num != 4){
+                    int sum=0;
+                    int temp=num;
+        while(temp!=0){
+            int digit=temp%10;
+            sum+=(digit*digit);
+temp=temp/10;
+}
+num=sum;
+}
+if(num==1){
+    System.out.print("happy");
+    }else{
+            System.out.print(" not happy");
+    }
+    }
+}
