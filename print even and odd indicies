@@ -1,0 +1,19 @@
+import java.util.ArrayList;
+class Main {
+    public static void main(String[] args) {
+        int [] k={24,27,-1,30,28,-3,25};
+            ArrayList<Integer> d = new ArrayList<>();
+        ArrayList<Integer> f = new ArrayList<>(); 
+        for (int num : k) {
+            if(num%2==0){
+                d.add(num);
+        }else if(num!=0){
+f.add(num);      
+                System.out.print(num);
+        }
+        }System.out.println();
+        System.out.println(d);
+                System.out.println(f);
+
+    }
+}
