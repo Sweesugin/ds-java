@@ -1,0 +1,13 @@
+
+class Main {
+    public static void main(String[] args) {
+        int age=987;
+        int sum=0;
+        while(age!=0){
+            int digit=age%10;
+            sum+=(digit*digit);
+age=age/10;}
+    System.out.print(sum);
+ 
+    }
+}
