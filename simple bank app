@@ -1,0 +1,136 @@
+import java.util.Scanner;
+class Main {
+    static String[] names = new String[100];
+    static String[] password = new String[100];
+    static double[] balance = new double[100];
+    static int accountCount = 0;
+
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.println("WELCOME TO  BANK");
+        System.out.println("1. Account Creation");
+        System.out.println("2. Login to Your Account");
+        System.out.println("3. Send Money");
+        System.out.println("4. Balance Check");
+        System.out.println("5. Exit");
+
+        while (true) {
+            System.out.print("\nEnter choice: ");
+            int choice = s.nextInt();
+            s.nextLine(); 
+            switch (choice) {
+                case 1: 
+                createAcc(); 
+                break;
+                case 2: 
+                    login();
+                    break;
+                case 3: 
+                    sendMoney();
+                    break;
+                case 4: 
+                    checkBal();
+                    break;
+                case 5: 
+                    System.out.println("........Exit........"); return;
+                default:
+                System.out.println("Invalid Choice!");
+            }
+        }
+    }
+
+    static void createAcc() {
+        Scanner s = new Scanner(System.in);
+        
+        System.out.print("Enter Your Name: ");
+        names[accountCount] = s.nextLine();
+        System.out.print("Enter Password: ");
+        password[accountCount] = s.nextLine();
+        System.out.print("Enter Initial Balance: ");
+        balance[accountCount] = s.nextDouble();
+
+        System.out.println("\nAccount created successfully!");
+        System.out.println("Name: " + names[accountCount] + 
+                           "\nBalance: " + balance[accountCount] + 
+                           "\nPassword: " + password[accountCount]);
+
+        accountCount++;
+    }
+
+    static int findAcc(String name, String pass) {
+        for (int i = 0; i < accountCount; i++) {
+            if (names[i].equals(name) && password[i].equals(pass)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    static void login() {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter Your Name: ");
+        String name = s.nextLine();
+        System.out.print("Enter Password: ");
+        String pass = s.nextLine();
+
+        int index = findAcc(name, pass);
+        if (index != -1) {
+            System.out.println("Login Successful! Welcome " + names[index]);
+        } else {
+            System.out.println("Invalid Name or Password!");
+        }
+    }
+
+    static void sendMoney() {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter Your Name: ");
+        String sender = s.nextLine();
+        System.out.print("Enter Your Password: ");
+        String pass = s.nextLine();
+
+        int senderIndex = findAcc(sender, pass);
+        if (senderIndex == -1) {
+            System.out.println("Invalid Login! Cannot Send Money.");
+            return;
+        }
+
+        System.out.print("Enter Receiver Name: ");
+        String receiver = s.nextLine();
+        int receiverIndex = -1;
+        for (int i = 0; i < accountCount; i++) {
+            if (names[i].equals(receiver)) {
+                receiverIndex = i;
+                break;
+            }
+        }
+        if (receiverIndex == -1) {
+            System.out.println("Receiver not found!");
+            return;
+        }
+
+        System.out.print("Enter Amount: ");
+        double amt = s.nextDouble();
+        if (balance[senderIndex] >= amt) {
+            balance[senderIndex] -= amt;
+            balance[receiverIndex] += amt;
+            System.out.println("Rs." + amt + " sent from " + sender + " to " + receiver);
+        } else {
+            System.out.println("Insufficient Balance!");
+        }
+    }
+
+    static void checkBal() {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter Your Name: ");
+        String name = s.nextLine();
+        System.out.print("Enter Password: ");
+        String pass = s.nextLine();
+
+        int index = findAcc(name, pass);
+        if (index != -1) {
+            System.out.println("Your Balance: Rs." + balance[index]);
+        } else {
+            System.out.println("Invalid Name or Password!");
+        }
+    }
+}
