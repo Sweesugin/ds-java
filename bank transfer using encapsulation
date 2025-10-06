@@ -1,0 +1,81 @@
+`import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        bankDB db = new bankDB();
+        Scanner sc = new Scanner(System.in);
+        double amt = 5000;
+        db.setpin("2005");
+
+        while (true) {
+            System.out.println("\n--- Bank Menu ---");
+            System.out.println("1. View Balance");
+            System.out.println("2. Send Money");
+            System.out.println("3. Deposit Money");
+            System.out.println("4. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Current Balance: " + amt);
+                    break;
+
+                case 2:
+                    System.out.print("Enter amount to send: ");
+                    double send_amt = sc.nextDouble();
+                    amt = db.balance(amt, send_amt);
+                    break;
+
+                case 3:
+                    System.out.print("Enter amount to deposit: ");
+                    double dep_amt = sc.nextDouble();
+                    amt = db.deposit(amt, dep_amt);
+                    break;
+
+                case 4:
+                    System.out.println("Thank you! Exiting...");
+                    return;
+
+                default:
+                    System.out.println("Invalid choice, try again!");
+            }
+        }
+    }
+}
+
+class bankDB {
+    private double bal;
+    private String pin;
+
+    void setpin(String pin) {
+        this.pin = pin;
+    }
+
+    String getpin() {
+        return pin;
+    }
+    public double balance(double amt, double send) {
+        if (amt >= send) {
+            bal = amt - send;
+            System.out.println("PIN: " + getpin());
+            System.out.println("Amount sent: " + send);
+            System.out.println("Remaining Balance: " + bal);
+        } else {
+            System.out.println("Balance insufficient!");
+            bal = amt;
+        }
+        return bal;
+    }
+    public double deposit(double amt, double dep) {
+        if (dep > 0) {
+            bal = amt + dep;
+            System.out.println("Amount Deposited: " + dep);
+            System.out.println("Updated Balance: " + bal);
+        } else {
+            System.out.println("Invalid deposit amount!");
+            bal = amt;
+        }
+        return bal;
+    }
+}
+`
