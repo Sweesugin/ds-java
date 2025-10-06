@@ -1,0 +1,8 @@
+class Solution {
+    public static void arrayTraversalReverse(int[] arr) {
+        // Code here
+        for(int i=arr.length;i<=1;i--){
+            System.out.println(arr[i]);
+        }
+    }
+}
