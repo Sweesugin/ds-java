@@ -35,6 +35,20 @@ public void sea(int value){
             p++;
         }
     }
+    public void del(int value){
+        Node temp=head;
+          if(temp.data==value){
+                head=temp.next;
+            }
+        while(temp.next!=null){
+            if(temp.next.data==value){
+                temp.next=temp.next.next;
+                return;
+            }
+            temp=temp.next;
+        }
+    }
+
 
 public void display(){
          Node temp=head;
@@ -47,10 +61,10 @@ temp=temp.next;
 class Main {
     public static void main(String[] args) {
         single s=new single();
+        s.insert(7);
+        s.insert(8);
         s.insert(6);
-        s.insert(6);
-        s.insert(6);
-
+       s.del(7);
         s.display();
         s.sea(6);
     }
