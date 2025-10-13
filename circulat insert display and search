@@ -58,8 +58,37 @@ class CircularLinkedList {
             System.out.println("Value " + key + " not found");
         
     }
+public void delete(int key) {
+    if (tail == null) {
+        System.out.println("List is empty.");
+        return;
+    }
+
+    Node current = tail.next; 
+
+    if (current == tail && current.data == key) {
+        tail = null;
+        System.out.println("Deleted " + key);
+        return;
+    }
+
+    do {
+        Node nextNode = current.next;
+        if (nextNode.data == key) {
+            if (nextNode == tail) {
+                tail = current;
+            }
+            current.next = nextNode.next; 
+            System.out.println("Deleted " + key);
+            return;
+        }
+        current = current.next;
+    } while (current != tail.next);
+
+    System.out.println(key + " not found.");
 }
 
+}
 class Main {
     public static void main(String[] args) {
         CircularLinkedList list = new CircularLinkedList();
@@ -67,7 +96,7 @@ class Main {
         list.insert(20);
         list.insert(30);
         list.insert(40);
-
+        list.delete(40);
         System.out.println("Circular Linked List:");
         list.display();
 
