@@ -1,0 +1,64 @@
+class Node {
+    int data;
+    Node next;
+    Node(int data) {
+        this.data = data; 
+        next = null;
+    }
+}
+class Queue {
+    Node front = null; 
+    Node rear = null; 
+    public void enqueue(int value) {
+        Node newNode = new Node(value);
+    
+        if (rear == null) {
+            front = newNode;
+            rear = newNode;
+            return;
+        } 
+
+        else {
+            rear.next = newNode;
+            rear = newNode;
+        }
+        System.out.println(value);
+    }
+    public void dequeue() {
+        if (front == null) {
+            System.out.println("Queue is Empty, cannot dequeue.");
+            return;
+        }
+
+        int removedData = front.data;
+        front = front.next; 
+
+        if (front == null) {
+            rear = null;
+        }
+        System.out.println("Dequeued: " + removedData);
+    }
+
+    public void display() {
+        Node temp = front;
+        if (front == null) {
+            System.out.println("Queue is Empty.");
+        } else {
+            System.out.print("Elements ");
+            while (temp != null) {
+                System.out.print(temp.data);
+                temp = temp.next;
+            }
+            System.out.println();
+        }
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Queue myQueue = new Queue();
+        myQueue.enqueue(10);
+        myQueue.enqueue(20);
+        myQueue.dequeue();
+        myQueue.display();
+    }
+}
