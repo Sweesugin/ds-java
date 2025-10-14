@@ -1,0 +1,47 @@
+class Main{
+    public static void main(String [] args){
+        s s1=new s();
+        s1.push(23);
+        s1.push(34);
+        s1.push(45);
+        s1.pop();
+        s1.display();
+    }
+}
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data=data;
+        this.next=null;
+    }
+}
+class s{
+    Node top=null;
+    public void pop(){
+        if(top==null){
+            System.out.println("List is Empty");
+            return;
+        }else{
+            System.out.println(top.data);
+            top=top.next;
+        }
+    }
+    public void push(int value){
+        Node newnode=new Node(value);
+            newnode.next=top;
+            top=newnode;
+            System.out.println(value);
+        }
+        public void display(){
+            Node temp=top;
+            if(top==null){
+                System.out.println("List is Empty");
+            }else{
+                while(temp!=null){
+                System.out.println(temp.data);
+                  temp=temp.next;
+            }              
+        }
+    }
+}
