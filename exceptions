@@ -1,0 +1,15 @@
+class Main {
+    public static void main(String[] args) {
+        try {
+            String a = "hii";
+
+            if (!a.equals("hi")) {
+                throw new ArithmeticException("not valid");
+            }
+
+            System.out.println(a);
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+    }
+}
