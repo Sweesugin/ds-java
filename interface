@@ -1,0 +1,25 @@
+interface Father {
+    void land();
+}
+
+interface Mother {
+    void jewels();
+}
+
+class Child implements Father, Mother {
+    public void land() {
+        System.out.println("Inherited land from Father");
+    }
+
+    public void jewels() {
+        System.out.println("Inherited jewels from Mother");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Child c = new Child();
+        c.land();
+        c.jewels();
+    }
+}
