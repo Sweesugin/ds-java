@@ -1,0 +1,23 @@
+
+class demo {
+    private int rollno;
+    private int totalmarks;
+    public int getrollno(){
+    return rollno;}
+    public void setrollno(int roll){
+    rollno=roll;
+        
+    }
+    public int gettotal(){
+        return totalmarks;
+    }
+    public void settotal(int t){
+        totalmarks=t;
+    }}
+class Main {
+    public static void main(String[] args) {
+       demo d=new demo();
+       d.setrollno(90);
+       d.settotal(100);
+       System.out.println("Roll No: " + d.getrollno()); System.out.println("Total Marks: " + d.gettotal());
+    }}
