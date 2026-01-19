@@ -1,0 +1,27 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+class main{
+    public static void main(String[] args) {
+     zomato b1=new zomato();
+     b1.hotelname="briyaniHome";
+     b1.category="Non-veg";
+     b1.food="briyani , Grill , Tikka";
+     b1.order();
+          zomato b2=new zomato();
+          b2.hotelname="Dominos";
+          b2.category="both";
+          b2.food="Chessy pizza , lava cake";
+          b2.order();
+
+}}
+class zomato {
+    String hotelname;
+    String category ;
+    String food;
+    public void order(){
+        System.out.println("Welcome to "+hotelname);
+        System.out.println("Category is"+category);
+        System.out.println("Food Available "+food);
+
+    }
+    }
