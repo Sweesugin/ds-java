@@ -1,0 +1,19 @@
+class Main{
+    public static void main(String[] args) {
+        child c=new child();
+        c.assests();
+}}
+class parent {
+    int land=9000;
+    int jewels=8000;
+    void assest(){
+        System.out.println("Total Value "+(land+jewels));
+    }
+}
+class child extends parent{
+    int property=10000;
+      void assests(){
+        System.out.println("Total Value "+(property+land+jewels));
+    }
+}
+  
