@@ -1,0 +1,27 @@
+
+class main{
+    public static void main(String[] args) {
+     zomato b1=new zomato();
+     b1.order();
+        zomato b2=new zomato();
+          b2.order();
+          
+}}
+class zomato {
+    String hotelname;
+    String category ;
+    String food;
+    zomato(){
+          this.hotelname="Kfc";
+        this.category="Veg";
+        this.food="Pizza";
+    }
+    public void order(){
+      
+        System.out.println("Welcome to "+hotelname);
+        System.out.println("Category is"+category);
+        System.out.println("Food Available "+food);
+
+
+    }
+    }
