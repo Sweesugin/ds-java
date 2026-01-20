@@ -1,0 +1,18 @@
+public class PrimePairsSum {
+    public static void main(String[] args) {
+        int number = 20; 
+        System.out.println("Prime pairs with sum = " + number + ":");
+        for (int i = 2; i <= number / 2; i++) {
+            if (isPrime(i) && isPrime(number - i)) {
+                System.out.println(i + " + " + (number - i)+" " +  number);
+            }
+        }
+    }
+    public static boolean isPrime(int n) {
+        if (n <= 1) return false;
+        for (int i = 2; i < n; i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+}
