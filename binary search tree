@@ -1,27 +1,25 @@
-class Node {
-    int data;
-    Node left, right;
-
-    Node(int value) {
-        data = value;
-        left = right = null;
-    }
-}
-
 class BinarySearchTree {
     Node root;
-    Node insert(Node root, int value) {
-        if (root == null) {
-            return new Node(value);
-        }
 
-        if (value < root.data) {
+    Node insert(Node root, int value) {
+        if (root == null)
+            return new Node(value);
+
+        if (value < root.data)
             root.left = insert(root.left, value);
-        } else if (value > root.data) {
+        else if (value > root.data)
             root.right = insert(root.right, value);
-        }
 
         return root;
+    }
+
+    // Print data
+    void inorder(Node root) {
+        if (root != null) {
+            inorder(root.left);
+            System.out.print(root.data + " ");
+            inorder(root.right);
+        }
     }
 
     public static void main(String[] args) {
@@ -33,6 +31,17 @@ class BinarySearchTree {
         bst.insert(bst.root, 20);
         bst.insert(bst.root, 40);
 
-        System.out.println("Nodes inserted successfully");
+        System.out.print("BST elements: ");
+        bst.inorder(bst.root);
     }
 }
+class Node {
+    int data;
+    Node left, right;
+
+    Node(int value) {
+        data = value;
+        left = right = null;
+    }
+}
+
