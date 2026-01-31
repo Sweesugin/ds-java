@@ -1,0 +1,13 @@
+public void reverse() {
+    node prevNode = null;
+    node current = head;
+
+    while(current != null) {
+        node nextNode = current.prev;   // store next node
+        current.prev = prevNode;        // reverse the link
+        prevNode = current;             // move prevNode forward
+        current = nextNode;             // move current forward
+    }
+
+    head = prevNode; // new head is the last node
+}
